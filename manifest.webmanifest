@@ -1,0 +1,9 @@
+{
+  "name": "Portal de Evidencias",
+  "short_name": "Evidencias",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f4f1",
+  "theme_color": "#984a3e",
+  "description": "Organiza tu trayectoria académica y tus evidencias."
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#9b493d">
+  <meta name="description" content="Portal de Evidencias: organiza tu trayectoria académica y tus evidencias.">
+  <title>Portal de Evidencias</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="authView" class="auth-shell">
+    <section class="auth-card">
+      <div class="brand-mark">PE</div>
+      <p class="eyebrow">PORTAFOLIO ESTUDIANTIL</p>
+      <h1>Portal de<br><span>Evidencias</span></h1>
+      <p class="muted">Organiza tus logros, proyectos y actividades en un solo lugar.</p>
+      <div class="tabs auth-tabs">
+        <button class="tab active" data-auth-tab="login">Iniciar sesión</button>
+        <button class="tab" data-auth-tab="register">Crear cuenta</button>
+      </div>
+      <form id="loginForm" class="form-stack">
+        <label>Correo electrónico<input id="loginEmail" type="email" placeholder=" estudiante@correo.com" required></label>
+        <label>Contraseña<input id="loginPassword" type="password" placeholder="Tu contraseña" required></label>
+        <button class="btn primary full" type="submit">Entrar al portal</button>
+        <p class="form-note">Demo local: puedes crear una cuenta de prueba. No uses contraseñas reales.</p>
+      </form>
+      <form id="registerForm" class="form-stack hidden">
+        <label>Nombre completo<input id="registerName" type="text" placeholder="Tu nombre" required></label>
+        <label>Correo electrónico<input id="registerEmail" type="email" placeholder="estudiante@correo.com" required></label>
+        <label>Contraseña<input id="registerPassword" type="password" minlength="4" placeholder="Mínimo 4 caracteres" required></label>
+        <button class="btn primary full" type="submit">Crear mi cuenta</button>
+        <p class="form-note">Esta versión guarda datos únicamente en este navegador para demostración.</p>
+      </form>
+    </section>
+    <aside class="auth-side">
+      <div class="side-orbit orbit-one"></div><div class="side-orbit orbit-two"></div>
+      <div class="side-copy">
+        <span class="side-kicker">TU CAMINO, TUS LOGROS</span>
+        <h2>Cada experiencia<br>cuenta.</h2>
+        <p>Registra tu formación, conserva tus evidencias y visualiza todo lo que has construido.</p>
+        <div class="side-pills"><span>Académico</span><span>Proyectos</span><span>Actividades</span></div>
+      </div>
+      <span class="side-footer">PORTAL DE EVIDENCIAS · 2026</span>
+    </aside>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand"><div class="brand-mark small">PE</div><div><strong>Portal de</strong><br><span>Evidencias</span></div></div>
+      <div class="nav-caption">MENÚ PRINCIPAL</div>
+      <nav class="main-nav">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">⌂</span> Inicio</button>
+        <button class="nav-link" data-page="profile"><span class="nav-icon">◉</span> Mi perfil</button>
+        <button class="nav-link" data-page="academic"><span class="nav-icon">▤</span> Formación académica</button>
+        <button class="nav-link" data-page="activities"><span class="nav-icon">✧</span> Formación extracurricular</button>
+        <button class="nav-link" data-page="projects"><span class="nav-icon">▧</span> Proyectos</button>
+        <button class="nav-link" data-page="evidences"><span class="nav-icon">⇧</span> Mis evidencias</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Tu portafolio crece contigo</strong><p>Mantén tus registros actualizados.</p></div>
+        <button class="nav-link logout" id="logoutBtn"><span class="nav-icon">↪</span> Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+        <div class="breadcrumb">Portal <span>/</span> <strong id="breadcrumbCurrent">Inicio</strong></div>
+        <div class="top-user"><div class="avatar" id="topAvatar">ES</div><div><strong id="topUserName">Estudiante</strong><small>Estudiante</small></div></div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-banner">
+            <div><p class="eyebrow light">PANEL DE ESTUDIANTE</p><h1>¡Hola, <span id="welcomeName">Estudiante</span>!</h1><p>Este es el espacio donde tu esfuerzo se convierte en evidencia.</p></div>
+            <div class="welcome-decoration"><div class="deco-circle">✦</div><div class="deco-line"></div></div>
+          </div>
+          <div class="section-heading"><div><p class="eyebrow">RESUMEN GENERAL</p><h2>Tu actividad</h2></div><span class="date-chip" id="todayDate"></span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-icon coral">▤</div><div><span>Registros académicos</span><strong id="statAcademic">0</strong></div></article>
+            <article class="stat-card"><div class="stat-icon peach">✧</div><div><span>Actividades</span><strong id="statActivities">0</strong></div></article>
+            <article class="stat-card"><div class="stat-icon lilac">▧</div><div><span>Proyectos</span><strong id="statProjects">0</strong></div></article>
+            <article class="stat-card"><div class="stat-icon green">⇧</div><div><span>Evidencias</span><strong id="statEvidences">0</strong></div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel quick-panel"><div class="panel-heading"><div><p class="eyebrow">ACCESO RÁPIDO</p><h3>¿Qué deseas registrar?</h3></div></div>
+              <div class="quick-actions">
+                <button class="quick-action" data-go="academic"><span class="quick-icon coral">▤</span><span><strong>Formación académica</strong><small>Materias y cursos</small></span><b>→</b></button>
+                <button class="quick-action" data-go="activities"><span class="quick-icon peach">✧</span><span><strong>Actividad extracurricular</strong><small>Talleres y reconocimientos</small></span><b>→</b></button>
+                <button class="quick-action" data-go="projects"><span class="quick-icon lilac">▧</span><span><strong>Nuevo proyecto</strong><small>Trabajos y participaciones</small></span><b>→</b></button>
+                <button class="quick-action" data-go="evidences"><span class="quick-icon green">⇧</span><span><strong>Subir evidencia</strong><small>Documentos e imágenes</small></span><b>→</b></button>
+              </div>
+            </section>
+            <section class="panel recent-panel"><div class="panel-heading"><div><p class="eyebrow">ÚLTIMOS MOVIMIENTOS</p><h3>Actividad reciente</h3></div><button class="text-btn" data-go="evidences">Ver todo</button></div><div id="recentList" class="recent-list"><div class="empty-state compact"><span>✦</span><p>Aún no tienes registros.<br>¡Comienza agregando uno!</p></div></div></section>
+          </div>
+        </section>
+
+        <section class="page" id="page-profile">
+          <div class="page-heading"><div><p class="eyebrow">INFORMACIÓN PERSONAL</p><h1>Mi perfil</h1><p>Administra tus datos de estudiante.</p></div></div>
+          <section class="panel profile-panel">
+            <div class="profile-top"><div class="profile-avatar" id="profileAvatar">ES</div><div><h2 id="profileDisplayName">Estudiante</h2><p id="profileDisplayEmail" class="muted"></p><span class="status-pill">Perfil de estudiante</span></div></div>
+            <form id="profileForm" class="form-grid">
+              <label>Nombre completo<input id="profileName" required></label>
+              <label>Correo electrónico<input id="profileEmail" type="email" required></label>
+              <label>Matrícula / Número de control<input id="profileStudentId" placeholder="Ej. 23010001"></label>
+              <label>Carrera o programa<input id="profileCareer" placeholder="Ej. Ingeniería en Sistemas"></label>
+              <label>Institución educativa<input id="profileSchool" placeholder="Nombre de tu institución"></label>
+              <label>Semestre actual<input id="profileSemester" placeholder="Ej. 3.º semestre"></label>
+              <label class="full-field">Descripción personal<textarea id="profileBio" rows="3" placeholder="Cuéntanos brevemente sobre tu trayectoria..."></textarea></label>
+              <div class="full-field form-actions"><button class="btn primary" type="submit">Guardar cambios</button></div>
+            </form>
+          </section>
+        </section>
+
+        <section class="page" id="page-academic">
+          <div class="page-heading"><div><p class="eyebrow">TRAYECTORIA EDUCATIVA</p><h1>Formación académica</h1><p>Registra tus estudios, cursos y logros académicos.</p></div><button class="btn primary" id="addAcademicBtn">＋ Agregar registro</button></div>
+          <section class="panel"><div id="academicList" class="record-list"></div></section>
+        </section>
+
+        <section class="page" id="page-activities">
+          <div class="page-heading"><div><p class="eyebrow">APRENDIZAJE COMPLEMENTARIO</p><h1>Formación extracurricular</h1><p>Incluye talleres, voluntariados, idiomas y reconocimientos.</p></div><button class="btn primary" id="addActivityBtn">＋ Agregar actividad</button></div>
+          <section class="panel"><div id="activitiesList" class="record-list"></div></section>
+        </section>
+
+        <section class="page" id="page-projects">
+          <div class="page-heading"><div><p class="eyebrow">TRABAJO Y EXPERIENCIA</p><h1>Mis proyectos</h1><p>Organiza tus proyectos escolares, personales o colaborativos.</p></div><button class="btn primary" id="addProjectBtn">＋ Nuevo proyecto</button></div>
+          <section class="panel"><div id="projectsList" class="record-list"></div></section>
+        </section>
+
+        <section class="page" id="page-evidences">
+          <div class="page-heading"><div><p class="eyebrow">ARCHIVO PERSONAL</p><h1>Mis evidencias</h1><p>Adjunta archivos para respaldar tus actividades y proyectos.</p></div><button class="btn primary" id="addEvidenceBtn">＋ Subir evidencia</button></div>
+          <section class="panel evidence-toolbar"><input id="evidenceSearch" type="search" placeholder="Buscar evidencia..."><select id="evidenceFilter"><option value="all">Todas las categorías</option><option value="academic">Académica</option><option value="activity">Extracurricular</option><option value="project">Proyecto</option><option value="other">Otra</option></select></section>
+          <section class="evidence-grid" id="evidenceList"></section>
+        </section>
+      </div>
+      <footer class="app-footer">Portal de Evidencias <span>·</span> Organiza tu trayectoria, conserva tus logros.</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><p class="eyebrow">PORTAL DE EVIDENCIAS</p><h2 id="modalTitle">Nuevo registro</h2></div><button class="icon-btn" id="closeModal" aria-label="Cerrar">×</button></div>
+      <form id="recordForm" class="form-stack">
+        <div id="modalFields"></div>
+        <div class="form-actions"><button type="button" class="btn secondary" id="cancelModal">Cancelar</button><button type="submit" class="btn primary">Guardar registro</button></div>
+      </form>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
